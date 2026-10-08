@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "mode": "synthetic",
+  "endpoint": "offline fixture (official mainnet preset label; zero HTTP requests)",
+  "preset": "mainnet",
+  "started_at": "2026-10-08T00:00:05.000+00:00",
+  "finished_at": "2026-10-08T00:00:05.000+00:00",
+  "request_count": 6,
+  "limits": {
+    "request_budget": 24,
+    "timeout_seconds": 5,
+    "deadline_seconds": 45,
+    "max_response_bytes": 262144,
+    "max_targets": 3,
+    "tip_retries": 1
+  },
+  "stop_reason": null,
+  "chain": {
+    "expected": 5042,
+    "observed": 5042,
+    "verdict": "verified"
+  },
+  "head": {
+    "target": "observed-head",
+    "verdict": "verified",
+    "execution": "unknown",
+    "detail": "Pinned number/hash lookups agree.",
+    "number": 100,
+    "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "timestamp": 1791417600,
+    "age_seconds_local_clock": 5.0,
+    "freshness": "within-120s-of-local-clock"
+  },
+  "observations": [
+    {
+      "request": 1,
+      "method": "eth_chainId",
+      "params": [],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": "0x13b2"
+    },
+    {
+      "request": 2,
+      "method": "eth_blockNumber",
+      "params": [],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": "0x64"
+    },
+    {
+      "request": 3,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "0x64",
+        false
+      ],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "number": "0x64",
+        "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "timestamp": "0x6ac6dd00",
+        "transactions": [
+          "0x1111111111111111111111111111111111111111111111111111111111111111"
+        ]
+      }
+    },
+    {
+      "request": 4,
+      "method": "eth_getBlockByHash",
+      "params": [
+        "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        false
+      ],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "number": "0x64",
+        "hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "timestamp": "0x6ac6dd00",
+        "transactions": [
+          "0x1111111111111111111111111111111111111111111111111111111111111111"
+        ]
+      }
+    },
+    {
+      "request": 5,
+      "method": "eth_getTransactionByHash",
+      "params": [
+        "0x1111111111111111111111111111111111111111111111111111111111111111"
+      ],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "blockNumber": "0x64",
+        "blockHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "transactionIndex": "0x0"
+      }
+    },
+    {
+      "request": 6,
+      "method": "eth_getTransactionReceipt",
+      "params": [
+        "0x1111111111111111111111111111111111111111111111111111111111111111"
+      ],
+      "observed_at": "2026-10-08T00:00:05.000+00:00",
+      "completed_at": "2026-10-08T00:00:05.000+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": null
+    }
+  ],
+  "method_support": {
+    "eth_chainId": "observed-supported",
+    "eth_blockNumber": "observed-supported",
+    "eth_getBlockByNumber": "observed-supported",
+    "eth_getBlockByHash": "observed-supported",
+    "eth_getTransactionByHash": "observed-supported",
+    "eth_getTransactionReceipt": "observed-supported"
+  },
+  "transactions": [
+    {
+      "target": "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "verdict": "observed-null",
+      "execution": "unknown",
+      "detail": "Transaction or receipt was null. Pending, import lag or unavailable history are possible; absence and failure are not proven."
+    }
+  ],
+  "blocks": [],
+  "limits_of_evidence": [
+    "Timestamped endpoint observations; not an authoritative chain source or finality proof.",
+    "Null does not prove absence, failure, pruning or endpoint misconduct.",
+    "Header availability at selected blocks does not establish archive-state completeness.",
+    "Near-tip changes may reflect backend import lag or changing chain observations.",
+    "Head age depends on local clock; this run does not measure uptime, reliability or speed."
+  ],
+  "scenario": "null-receipt",
+  "http_request_count": 0,
+  "simulated_request_count": 6
+}

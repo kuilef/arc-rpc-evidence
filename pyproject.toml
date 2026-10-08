@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools==83.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arc-rpc-evidence"
+version = "0.1.0"
+description = "Bounded, read-only evidence for Arc RPC receipt and block observations"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "kuilef"}]
+dependencies = []
+
+[project.scripts]
+arc-rpc-evidence = "arc_rpc_evidence.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["arc_rpc_evidence*"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+strict = true
+files = ["arc_rpc_evidence"]
