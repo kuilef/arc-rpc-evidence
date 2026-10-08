@@ -112,7 +112,12 @@ python -m build
 python -m pip check
 ```
 
-[Записанная mainnet проверка](evidence/live-2026-10-08/report.md) содержит восемь
-read-only попыток с UTC timestamps. Реальное выполнение транзакции в ней не
-проверялось. Synthetic cases и live observations лежат отдельно. Нет оценки
+[Первая mainnet проверка](evidence/live-2026-10-08/report.md) содержит восемь
+read-only попыток с UTC timestamps для null/genesis.
+[Положительный follow-up](evidence/live-positive-2026-10-08/report.md) подтвердил
+согласованные transaction/receipt/inclusion и status 0x1 существующей публичной
+транзакции. На выбор hash из одного недавнего блока и CLI ушло 11 из 12 попыток;
+широкой истории не просматривали. В опубликованном JSON оставлены используемые
+проверками поля; неиспользуемые адреса, logs и calldata убраны. Synthetic cases
+и live observations лежат отдельно. Нет оценки
 скорости, uptime, злонамеренности endpoint или рекомендации покупать активы.

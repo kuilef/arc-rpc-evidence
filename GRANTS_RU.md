@@ -53,9 +53,12 @@ Repository: https://github.com/kuilef/arc-rpc-evidence
 Demo: `python -m arc_rpc_evidence demo --scenario null-receipt`.
 Live: `python -m arc_rpc_evidence check --preset mainnet --block 0 --budget 12`.
 Evidence: [mainnet observations](evidence/live-2026-10-08/report.md),
+[positive receipt check](evidence/live-positive-2026-10-08/report.md),
 [synthetic replay](evidence/demo-null/report.md), tests and Actions in repository.
-Данные demo вымышлены; real smoke проверил headers и null lookup, а не успешное
-выполнение реальной транзакции. Полный архив и надёжность RPC не заявлены.
+Данные demo вымышлены. Первый live smoke проверил headers и null lookup;
+отдельный follow-up согласовал существующую transaction/receipt/inclusion и
+status 0x1. На выбор hash и CLI потрачено 11/12 read-only попыток на одном RPC.
+Полный архив, независимое доказательство finality и надёжность RPC не заявлены.
 
 ## Только пользователь выполняет эти шаги
 

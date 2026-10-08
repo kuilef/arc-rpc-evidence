@@ -101,6 +101,32 @@ class EvidenceTests(unittest.TestCase):
                                "eth_getTransactionReceipt": [{"status": "ok", "result": None}]})
         self.assertEqual(report.get("transactions", [{}])[0].get("execution"), "unknown")
 
+    def test_empty_or_incomplete_objects_are_insufficient_not_pending_conflict(self) -> None:
+        mined_tx = {"hash": TX, "blockNumber": "0x64", "blockHash": HEAD_HASH,
+                    "transactionIndex": "0x0"}
+        mined_receipt = {"transactionHash": TX, "blockNumber": "0x64", "blockHash": HEAD_HASH,
+                         "transactionIndex": "0x0", "status": "0x1"}
+        pending = {"hash": TX, "blockNumber": None, "blockHash": None, "transactionIndex": None}
+        partial_pending = {"hash": TX, "blockNumber": None, "blockHash": None}
+        partial_receipt = {key: value for key, value in mined_receipt.items() if key != "status"}
+        for tx, receipt in (({}, {}), ({}, mined_receipt), ({"hash": TX}, mined_receipt),
+                            (partial_pending, mined_receipt), (pending, {}),
+                            (pending, partial_receipt), (mined_tx, {"transactionHash": TX})):
+            with self.subTest(tx=tx, receipt=receipt):
+                report, _ = self.check({"eth_getTransactionByHash": [{"status": "ok", "result": tx}],
+                                       "eth_getTransactionReceipt": [{"status": "ok", "result": receipt}]})
+                self.assertEqual(report["transactions"][0]["verdict"], "insufficient-evidence")
+                self.assertEqual(report["transactions"][0]["execution"], "unknown")
+
+    def test_valid_pending_and_valid_mined_receipt_conflict_is_inconsistent(self) -> None:
+        pending = {"hash": TX, "blockNumber": None, "blockHash": None, "transactionIndex": None}
+        receipt = {"transactionHash": TX, "blockNumber": "0x64", "blockHash": HEAD_HASH,
+                   "transactionIndex": "0x0", "status": "0x1"}
+        report, _ = self.check({"eth_getTransactionByHash": [{"status": "ok", "result": pending}],
+                               "eth_getTransactionReceipt": [{"status": "ok", "result": receipt}]})
+        self.assertEqual(report["transactions"][0]["verdict"], "inconsistent-observation")
+        self.assertEqual(report["transactions"][0]["execution"], "unknown")
+
     def test_invalid_inputs_make_no_requests(self) -> None:
         for options in ({"preset": "http://127.0.0.1"}, {"budget": 25},
                         {"transactions": ["bad"]}, {"blocks": ["../file"]},

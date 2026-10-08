@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "mode": "live",
+  "endpoint": "https://rpc.mainnet.arc.io",
+  "preset": "mainnet",
+  "started_at": "2026-10-08T21:32:24.305+00:00",
+  "finished_at": "2026-10-08T21:32:26.431+00:00",
+  "request_count": 8,
+  "limits": {
+    "request_budget": 9,
+    "timeout_seconds": 5.0,
+    "deadline_seconds": 45,
+    "max_response_bytes": 262144,
+    "max_targets": 3,
+    "tip_retries": 1
+  },
+  "stop_reason": null,
+  "chain": {
+    "expected": 5042,
+    "observed": 5042,
+    "verdict": "verified"
+  },
+  "head": {
+    "target": "observed-head",
+    "verdict": "verified",
+    "execution": "unknown",
+    "detail": "Pinned number/hash lookups agree.",
+    "number": 24964963,
+    "hash": "0x604117c1e2672f73aa523028c2de08cbf348e261f25e7fb48ae24bcafc67eb66",
+    "timestamp": 1791495144,
+    "age_seconds_local_clock": 1.374,
+    "freshness": "within-120s-of-local-clock"
+  },
+  "observations": [
+    {
+      "request": 1,
+      "method": "eth_chainId",
+      "params": [],
+      "observed_at": "2026-10-08T21:32:24.305+00:00",
+      "completed_at": "2026-10-08T21:32:24.587+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": "0x13b2"
+    },
+    {
+      "request": 2,
+      "method": "eth_blockNumber",
+      "params": [],
+      "observed_at": "2026-10-08T21:32:24.587+00:00",
+      "completed_at": "2026-10-08T21:32:24.847+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": "0x17cef63"
+    },
+    {
+      "request": 3,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "0x17cef63",
+        false
+      ],
+      "observed_at": "2026-10-08T21:32:24.847+00:00",
+      "completed_at": "2026-10-08T21:32:25.102+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0x604117c1e2672f73aa523028c2de08cbf348e261f25e7fb48ae24bcafc67eb66",
+        "number": "0x17cef63",
+        "timestamp": "0x6ac80be8",
+        "transactions": [
+          "0xf82f97313b827e207b8443f1acba480057e5a8c17b76025eece66c69a57fd9eb",
+          "0x4f95eee4fd9d9fd753999d5911ce080b978c505069cb99b18e143f45d1a0fddc",
+          "0x99a466be11276cd7bd83a8a387d9634b1b3413917b251b8c0a9f97d0cbfdd622"
+        ]
+      }
+    },
+    {
+      "request": 4,
+      "method": "eth_getBlockByHash",
+      "params": [
+        "0x604117c1e2672f73aa523028c2de08cbf348e261f25e7fb48ae24bcafc67eb66",
+        false
+      ],
+      "observed_at": "2026-10-08T21:32:25.102+00:00",
+      "completed_at": "2026-10-08T21:32:25.373+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0x604117c1e2672f73aa523028c2de08cbf348e261f25e7fb48ae24bcafc67eb66",
+        "number": "0x17cef63",
+        "timestamp": "0x6ac80be8",
+        "transactions": [
+          "0xf82f97313b827e207b8443f1acba480057e5a8c17b76025eece66c69a57fd9eb",
+          "0x4f95eee4fd9d9fd753999d5911ce080b978c505069cb99b18e143f45d1a0fddc",
+          "0x99a466be11276cd7bd83a8a387d9634b1b3413917b251b8c0a9f97d0cbfdd622"
+        ]
+      }
+    },
+    {
+      "request": 5,
+      "method": "eth_getTransactionByHash",
+      "params": [
+        "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e"
+      ],
+      "observed_at": "2026-10-08T21:32:25.373+00:00",
+      "completed_at": "2026-10-08T21:32:25.647+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+        "blockNumber": "0x17cef1b",
+        "blockHash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+        "transactionIndex": "0x0"
+      }
+    },
+    {
+      "request": 6,
+      "method": "eth_getTransactionReceipt",
+      "params": [
+        "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e"
+      ],
+      "observed_at": "2026-10-08T21:32:25.647+00:00",
+      "completed_at": "2026-10-08T21:32:25.909+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "transactionHash": "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+        "blockNumber": "0x17cef1b",
+        "blockHash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+        "transactionIndex": "0x0",
+        "status": "0x1"
+      }
+    },
+    {
+      "request": 7,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "0x17cef1b",
+        false
+      ],
+      "observed_at": "2026-10-08T21:32:25.909+00:00",
+      "completed_at": "2026-10-08T21:32:26.165+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+        "number": "0x17cef1b",
+        "timestamp": "0x6ac80bc3",
+        "transactions": [
+          "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+          "0x31d8164318d1a2c44b3c57cbd3f4cc666b2bab107dd1a0f00d8268faa42f0b1b",
+          "0x080be4f674a902da88a4b94013cc75e6c1fa708f112c5a2349160c20e8e08674",
+          "0x10738d2c004f0680e302bcedad8c5f0a9669a7a2586decdcefa8c6aff5cf704b",
+          "0x757d95a14f1e72fcbaede8ec56e4dfd8ebe148c0f91ff01db4d7ce261b6f6636"
+        ]
+      }
+    },
+    {
+      "request": 8,
+      "method": "eth_getBlockByHash",
+      "params": [
+        "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+        false
+      ],
+      "observed_at": "2026-10-08T21:32:26.165+00:00",
+      "completed_at": "2026-10-08T21:32:26.431+00:00",
+      "attempt": 1,
+      "status": "ok",
+      "result": {
+        "hash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+        "number": "0x17cef1b",
+        "timestamp": "0x6ac80bc3",
+        "transactions": [
+          "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+          "0x31d8164318d1a2c44b3c57cbd3f4cc666b2bab107dd1a0f00d8268faa42f0b1b",
+          "0x080be4f674a902da88a4b94013cc75e6c1fa708f112c5a2349160c20e8e08674",
+          "0x10738d2c004f0680e302bcedad8c5f0a9669a7a2586decdcefa8c6aff5cf704b",
+          "0x757d95a14f1e72fcbaede8ec56e4dfd8ebe148c0f91ff01db4d7ce261b6f6636"
+        ]
+      }
+    }
+  ],
+  "method_support": {
+    "eth_chainId": "observed-supported",
+    "eth_blockNumber": "observed-supported",
+    "eth_getBlockByNumber": "observed-supported",
+    "eth_getBlockByHash": "observed-supported",
+    "eth_getTransactionByHash": "observed-supported",
+    "eth_getTransactionReceipt": "observed-supported"
+  },
+  "transactions": [
+    {
+      "target": "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+      "verdict": "verified",
+      "execution": "succeeded",
+      "detail": "Receipt, transaction and pinned block inclusion agree at observation times.",
+      "number": 24964891,
+      "hash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+      "timestamp": 1791495107
+    }
+  ],
+  "blocks": [],
+  "limits_of_evidence": [
+    "Timestamped endpoint observations; not an authoritative chain source or finality proof.",
+    "Null does not prove absence, failure, pruning or endpoint misconduct.",
+    "Header availability at selected blocks does not establish archive-state completeness.",
+    "Near-tip changes may reflect backend import lag or changing chain observations.",
+    "Head age depends on local clock; this run does not measure uptime, reliability or speed."
+  ],
+  "published_result_policy": "Only fields used by evidence checks are retained; addresses, logs, calldata and other unused fields omitted."
+}

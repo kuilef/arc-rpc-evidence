@@ -2,7 +2,7 @@
 
 Verified on 2026-10-08 with Python 3.12 on Windows.
 
-- `python -m unittest -q`: 43 tests, zero failures/errors.
+- `python -m unittest -q`: 45 tests, zero failures/errors after the bounded follow-up.
 - `python -m ruff check .`: passed.
 - `python -m mypy`: strict check passed for seven source modules.
 - `python -m build`: wheel and sdist built successfully using setuptools 83.0.0.
@@ -28,6 +28,20 @@ requests on the official primary Arc endpoint, timestamped 21:09:32.373 through
 transaction lookup and receipt lookup. Head and genesis header comparisons agreed;
 the deliberately zero transaction hash returned null. No real execution status,
 archive-state completeness, uptime, reliability or speed was established.
+
+Positive follow-up: [CLI report](live-positive-2026-10-08/report.md) and
+[selection accounting](live-positive-2026-10-08/selection.json). Three official
+reads selected the first transaction in one head-minus-four block (24964891),
+then eight CLI reads verified the same pinned number/hash, receipt status `0x1`
+and transaction inclusion. Total 11/12 attempts, 21:31:49.577..21:32:26.431 UTC.
+Unused addresses, logs, calldata and other non-evidence fields are omitted from
+the published JSON. This records endpoint agreement, not independent finality.
+
+Additional review counterexample reproduced: successful RPC envelopes containing
+empty/incomplete transaction/receipt objects incorrectly produced a pending
+conflict. Schema is now validated first; the regression failed six assertions
+before the fix, then passed. A valid pending transaction plus valid mined receipt
+retains `inconsistent-observation` and unknown execution. Full suite 45/45 green.
 
 No getLogs, signatures, wallet calls, transaction submissions, public services,
 grant submissions or contacts were made. CI performs offline verification only.

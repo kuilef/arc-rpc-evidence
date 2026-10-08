@@ -200,15 +200,19 @@ class Runner:
             return finding
         if not isinstance(a, dict) or not isinstance(b, dict):
             return finding
-        if a.get("blockNumber") is None and a.get("blockHash") is None:
-            finding.update(verdict="inconsistent-observation", detail="Pending transaction observation conflicts with a non-null receipt; sequential near-tip observations may change.")
-            return finding
         if (not is_hash(a.get("hash")) or not is_hash(b.get("transactionHash"))
-                or not is_hash(a.get("blockHash")) or not is_hash(b.get("blockHash"))
-                or quantity(a.get("blockNumber")) is None or quantity(b.get("blockNumber")) is None
-                or quantity(a.get("transactionIndex")) is None or quantity(b.get("transactionIndex")) is None
+                or not is_hash(b.get("blockHash")) or quantity(b.get("blockNumber")) is None
+                or quantity(b.get("transactionIndex")) is None
                 or b.get("status") not in ("0x0", "0x1")):
             finding["detail"] = "Malformed transaction/receipt fields or unsupported receipt status."
+            return finding
+        pending_keys = ("blockNumber", "blockHash", "transactionIndex")
+        if all(key in a and a[key] is None for key in pending_keys):
+            finding.update(verdict="inconsistent-observation", detail="Valid pending transaction observation conflicts with a valid mined receipt; sequential near-tip observations may change.")
+            return finding
+        if (not is_hash(a.get("blockHash")) or quantity(a.get("blockNumber")) is None
+                or quantity(a.get("transactionIndex")) is None):
+            finding["detail"] = "Incomplete or malformed mined/pending transaction fields."
             return finding
         number = quantity(a["blockNumber"])
         matches = (a["hash"].lower() == b["transactionHash"].lower() == target

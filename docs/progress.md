@@ -34,3 +34,11 @@ count; nested +/- overflowing JSON floats rejected before export. Full suite
 43/43 GREEN, lint and strict types pass. No deferred minor findings.
 Dependency audit found PYSEC-2026-3447 in development/build setuptools 80.9.0;
 updated only this project's pins to fixed 83.0.0. Runtime dependencies remain zero.
+
+Bounded follow-up: one head-minus-four block selected, first public transaction
+checked by the CLI. Selection 3 + CLI 8 = 11/12 attempts. Same selected block
+number/hash, transaction/receipt/inclusion and status 0x1 verified; no wide scan.
+Positive published evidence minimizes unused addresses/logs/calldata.
+Parent review P2 reproduced with empty/incomplete object fixtures (six failed
+assertions); minimal schema-before-pending fix then full 45/45 GREEN, lint/types
+passed. Valid pending plus valid mined receipt remains inconsistent/unknown.

@@ -88,11 +88,16 @@ Scenarios: `healthy`, `null-receipt`, `null-transaction`, `failed-receipt`,
 `missing-block`, `conflict`, `tip-recover`, `tip-stop`, `rate-limit`, `timeout`,
 `malformed`, `wrong-chain`. Demo requests are simulated; actual HTTP count is zero.
 
-[Synthetic null demo](evidence/demo-null/report.md) and
-[timestamped mainnet smoke](evidence/live-2026-10-08/report.md) are separate.
-The recorded smoke made eight reads: identity/head/pinned head, genesis by
+[Synthetic null demo](evidence/demo-null/report.md),
+[null/genesis mainnet smoke](evidence/live-2026-10-08/report.md) and
+[positive mainnet receipt smoke](evidence/live-positive-2026-10-08/report.md) are separate.
+The first recorded smoke made eight reads: identity/head/pinned head, genesis by
 number/hash, zero-hash transaction/receipt. It observed mainnet identity, consistent
-headers and null transaction data. It did not verify a real transaction's execution.
+headers and null transaction data. The positive follow-up used three reads to
+select the first transaction from a single head-minus-four block, then eight CLI
+reads to verify its receipt/transaction/pinned-block agreement and status `0x1`.
+Total: 11/12 attempts, no history scan. Published positive JSON retains only
+fields used by checks; unused addresses, logs and calldata are omitted.
 
 ## Development
 

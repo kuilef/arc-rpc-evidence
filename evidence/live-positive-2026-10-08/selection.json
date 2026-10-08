@@ -1,0 +1,52 @@
+{
+  "mode": "live-selection",
+  "endpoint": "https://rpc.mainnet.arc.io",
+  "started_at": "2026-10-08T21:31:49.577+00:00",
+  "finished_at": "2026-10-08T21:31:50.480+00:00",
+  "total_request_budget": 12,
+  "selection_request_count": 3,
+  "remaining_cli_budget": 9,
+  "stop_reason": "selected-first-public-transaction",
+  "observations": [
+    {
+      "request": 1,
+      "method": "eth_chainId",
+      "params": [],
+      "observed_at": "2026-10-08T21:31:49.915+00:00",
+      "status": "ok",
+      "chain_id": 5042
+    },
+    {
+      "request": 2,
+      "method": "eth_blockNumber",
+      "params": [],
+      "observed_at": "2026-10-08T21:31:50.191+00:00",
+      "status": "ok",
+      "head_number": 24964895
+    },
+    {
+      "request": 3,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "0x17cef1b",
+        false
+      ],
+      "observed_at": "2026-10-08T21:31:50.478+00:00",
+      "status": "ok",
+      "block_number": 24964891,
+      "block_hash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7",
+      "transaction_count": 5
+    }
+  ],
+  "selected": {
+    "transaction_hash": "0xae69b0c4dbf5e33cc4fad7794c4ae116c129bffc284a81dcb7444f0b2d9d717e",
+    "block_number": 24964891,
+    "block_hash": "0x6b34589d6f9cee72685cb3b98e150fa6f61a198adeeb7d7a0a7df6bc25130ff7"
+  },
+  "combined_request_count": 11,
+  "cli_observation_window": [
+    "2026-10-08T21:32:24.305+00:00",
+    "2026-10-08T21:32:26.431+00:00"
+  ],
+  "verified_selected_block": true
+}
