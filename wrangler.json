@@ -1,0 +1,10 @@
+{
+  "name": "arc-rpc-evidence",
+  "compatibility_date": "2026-10-09",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./web/public",
+    "not_found_handling": "none"
+  }
+}

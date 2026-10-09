@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Bounded live Arc RPC evidence for one public transaction or block."><link rel="stylesheet" href="/style.css"><title>Arc RPC Evidence</title></head>
+<body><main>
+<header><p class="eyebrow">ARC MAINNET · READ ONLY</p><h1>Arc RPC Evidence</h1><p>Inspect one public receipt or historical header. Keep the observations and their limits together.</p></header>
+<section class="panel"><form id="check">
+<label for="kind">Target</label><select id="kind"><option value="block">Block number</option><option value="transaction">Transaction hash</option></select>
+<label for="target">Identifier</label><input id="target" value="0" autocomplete="off" spellcheck="false" required maxlength="66">
+<p class="hint">One official endpoint · up to 12 sequential attempts · 5 seconds per read · 45-second deadline · 256 KiB per response. No scan, wallet, signature or write method.</p>
+<div class="actions"><button id="run">Read live evidence</button><button id="cancel" type="button" disabled>Cancel</button></div>
+<p class="hint">Reads go directly from your browser to rpc.mainnet.arc.io. Your public identifiers and IP are visible to that provider. Nothing is saved automatically.</p>
+</form></section>
+<p id="notice" role="status" aria-live="polite">Ready. Block 0 checks genesis when you press Read.</p>
+<section id="results" class="panel" hidden><h2 id="verdict"></h2><p id="detail"></p><p id="execution"></p><p id="scope"></p><div class="actions"><button id="json" type="button">Download JSON</button><button id="markdown" type="button">Download Markdown</button></div><details><summary>Inspect raw timestamped observations</summary><pre id="raw"></pre></details></section>
+<section class="panel"><h2>What the verdict means</h2>
+<dl><dt>verified</dt><dd>Returned identifiers and pinned inclusion agree at observation times. This is no independent trust or finality proof.</dd><dt>observed-null</dt><dd>A relevant response was null. Absence, failed execution and pruning are not established.</dd><dt>insufficient-evidence</dt><dd>An error, malformed response, cancellation or budget prevented verification.</dd><dt>inconsistent-observation</dt><dd>Observations disagree. Tip changes or backend lag may cause this; no endpoint misconduct claim.</dd></dl>
+<p>Execution is reported only after receipt, transaction and pinned-block inclusion agree. Selected header availability does not prove archive-state completeness.</p></section>
+<footer>This browser demo supports one transaction or numeric block target. The Python CLI supports three targets, block hashes and additional transport diagnostics. Browser schema and raw-data bounds differ; see the Russian deployment manual in the repository.</footer>
+</main><script type="module" src="/app.mjs"></script></body></html>
