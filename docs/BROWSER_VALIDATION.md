@@ -57,17 +57,36 @@ cannot distinguish redirect rejection from other fetch network errors and may
 have timers delayed when suspended. Simultaneous deadline/budget exhaustion has
 different stop-reason precedence. Both keep incomplete evidence unverified.
 
-## Still requiring deployed-browser validation
+## Hosted-browser validation — 2026-10-09
 
-No claim of successful hosting or fresh mainnet evidence is made here. A real
-Chromium launch was blocked by the cloud executor's IPC/socket restriction in
-the coordinated build task; DOM testing is not browser rendering/CORS testing.
+Public URL: https://arc-rpc-evidence.pages.dev/
+Deployment ID: `3b9cc6d8-5e50-4812-bc49-b3517020633e`.
+Published static assets are unchanged from the verified ZIP. The draft PR's
+Python and browser diagnostic CI workflows passed on commit
+`6000ed8a618c491c68d384c6fa55ca9e51f5cae0`.
 
-After Pages upload, verify the final project URL, root page and module MIME types;
-confirm CSP, no-referrer, nosniff and no-store response headers; check mobile
-layout; run a bounded genesis read and, if available, an already-known public
-transaction. Inspect actual attempts, timestamps, JSON/Markdown exports and
-Cancel/rerun. Do not create a transfer to obtain a receipt. Treat live network or
-CORS failures as insufficient evidence; do not replace them with fixtures or
-introduce a proxy. The previously published CLI evidence remains explicitly
-historical and separate from these offline tests.
+The initial standalone Chromium test launch was blocked by local IPC restrictions.
+A separately available cloud Chrome subsequently tested the actual deployed page
+with unmodified live fetches:
+
+- Genesis: target/chain/head verified, 6 attempts, completed
+  `2026-10-09T09:55:20.990Z`.
+- Public transaction
+  `0x691405ed18faaf588878725c5df92a338cad75fdec5b1f38250d9073ae7ad9c4`:
+  target verified, execution succeeded, chain/head verified, 8 attempts,
+  completed `2026-10-09T09:56:24.674Z`.
+- JSON download completed and parsed identically to the displayed report.
+- A separate deployment check confirmed CSP, no-referrer, nosniff and no-store
+  response headers. Browser live success also demonstrates that this origin's
+  CSP/CORS path worked for the tested network and browser.
+
+Another browser/network connection returned `network-error` on the initial
+`eth_chainId` request. Its precise cause is unresolved; local extension/filter,
+DNS/TLS/network, preflight or provider-path failures must be distinguished with
+Console/Network evidence. One logical attempt does not count browser-managed
+OPTIONS requests. No global availability guarantee follows from these samples.
+
+Mobile layout, hosted Markdown export and hosted Cancel/rerun are not asserted
+by the checks above; the automated DOM flow separately covers those controls.
+Treat network failures as insufficient evidence, without fake live fixtures or
+a speculative proxy. The previous CLI evidence remains historical and separate.

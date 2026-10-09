@@ -1,5 +1,27 @@
 # RPC Evidence: браузерное демо и Cloudflare Free
 
+## Опубликованное демо
+
+Адрес: https://arc-rpc-evidence.pages.dev/.
+Deployment: `3b9cc6d8-5e50-4812-bc49-b3517020633e`.
+Оставьте Block number = 0 и нажмите Read live evidence. Для receipt выберите
+Transaction hash и вставьте уже существующий публичный Arc mainnet hash.
+Прочитайте verdict, execution, request count и timestamps; скачайте JSON/Markdown.
+
+2026-10-09 из независимого Chrome на опубликованном origin проверены:
+- genesis: verified, chain/head verified, 6 requests, completed 09:55:20.990 UTC;
+- hash `0x691405ed18faaf588878725c5df92a338cad75fdec5b1f38250d9073ae7ad9c4`:
+  verified, execution succeeded, chain/head verified, 8 requests,
+  completed 09:56:24.674 UTC; JSON download совпал с displayed report.
+
+Другой браузер/сеть в тот же день дали network-error на первом eth_chainId.
+Причина локального сбоя не установлена; доступность из всех сетей не обещается.
+Один request означает одну логическую попытку RPC и не включает автоматический
+OPTIONS preflight браузера. Точный Console/Network error нужен, чтобы различить
+CORS, DNS/TLS, блокировку расширением/фильтром и сетевой ответ провайдера.
+Сбой остаётся недостаточным evidence, не заменяется fixture и не требует
+отключать защиту браузера. Общий дефект CSP/CORS опубликованной страницы не найден.
+
 Публичное демо — статические assets в `web/public`, адрес после публикации
 `arc-rpc-evidence.pages.dev`, если имя доступно; фактический URL нужно подтвердить
 в dashboard. Python Worker не нужен: Python CLI

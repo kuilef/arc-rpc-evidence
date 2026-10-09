@@ -11,6 +11,21 @@ python -m arc_rpc_evidence demo --scenario null-receipt
 **No wallet, API key or runtime dependencies. Python 3.11+.**
 [Русская инструкция](MANUAL_RU.md) · [Grant preparation](GRANTS_RU.md)
 
+## Public browser demo
+
+Open [Arc RPC Evidence](https://arc-rpc-evidence.pages.dev/), leave **Block
+number = 0**, and press **Read live evidence** for a bounded genesis check.
+Alternatively choose **Transaction hash** and supply an existing public Arc
+mainnet hash. Inspect the target, verdict, execution, attempt count and timestamps,
+then download JSON or Markdown. No transaction or wallet connection is needed.
+
+Hosted genesis and a known successful receipt were verified in Chrome on
+2026-10-09. Another browser/network connection returned `network-error`, so
+availability is not guaranteed. Browser evidence remains incomplete on failure.
+This demo supports one target and has a different schema and transport limits
+from the CLI. See [deployment and parity details](docs/CLOUDFLARE_RU.md) and
+[browser validation](docs/BROWSER_VALIDATION.md).
+
 ## Install and run
 
 ```console
